@@ -1,8 +1,9 @@
-package com.diegobiazin.task
+package com.diegobiazin.task.views
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.diegobiazin.task.R
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
