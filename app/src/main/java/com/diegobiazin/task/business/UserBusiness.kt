@@ -3,6 +3,7 @@ package com.diegobiazin.task.business
 import android.content.Context
 import com.diegobiazin.task.R
 import com.diegobiazin.task.constants.TaskConstants
+import com.diegobiazin.task.entities.UserEntity
 import com.diegobiazin.task.repository.UserRepository
 import com.diegobiazin.task.util.SecurityPreferences
 import com.diegobiazin.task.util.ValidationException
@@ -30,6 +31,20 @@ class UserBusiness(var context: Context) {
             mSecurityPreferences.storeString(TaskConstants.KEY.USER_EMAIL, email)
         } catch (e: Exception) {
             throw e
+        }
+    }
+
+    fun login(email: String, password: String): Boolean {
+
+        val user: UserEntity? = mUserRepository.get(email, password)
+        return if (user != null) {
+            mSecurityPreferences.storeString(TaskConstants.KEY.USER_ID, user.id.toString())
+            mSecurityPreferences.storeString(TaskConstants.KEY.USER_NAME, user.name)
+            mSecurityPreferences.storeString(TaskConstants.KEY.USER_EMAIL, user.email)
+
+            true
+        } else {
+            false
         }
     }
 

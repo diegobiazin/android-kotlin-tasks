@@ -1,15 +1,14 @@
 package com.diegobiazin.task.views
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.diegobiazin.task.R
 import com.diegobiazin.task.business.UserBusiness
-import com.diegobiazin.task.repository.UserRepository
 import com.diegobiazin.task.util.ValidationException
 import kotlinx.android.synthetic.main.activity_register.*
-import java.lang.Exception
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -43,6 +42,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
             //Inserção do usuário
             mUserBusiness.insert(name, email, password)
+
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         } catch (e: ValidationException) {
             Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
