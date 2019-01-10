@@ -16,6 +16,9 @@ class UserBusiness(var context: Context) {
             if (name == "" || email == "" || password == "")
                 throw ValidationException(context.getString(R.string.informe_todos_campos))
 
+            if(mUserRepository.isEmailExistent(email))
+                throw ValidationException(context.getString(R.string.email_em_uso))
+
             val userId = mUserRepository.insert(name, email, password)
         } catch (e: Exception) {
             throw e
