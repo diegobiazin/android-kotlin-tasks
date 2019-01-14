@@ -9,7 +9,7 @@ import java.lang.Exception
 
 class UserRepository private constructor(context: Context) {
 
-    private var mTaskDataBaseHelper: TaskDataBaseHelper = TaskDataBaseHelper(context);
+    private var mTaskDataBaseHelper: TaskDataBaseHelper = TaskDataBaseHelper(context)
 
     companion object {
         fun getInstance(context: Context): UserRepository {
