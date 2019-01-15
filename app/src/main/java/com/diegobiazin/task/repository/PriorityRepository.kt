@@ -28,7 +28,6 @@ class PriorityRepository private constructor(context: Context) {
 
             cursor = db.rawQuery("SELECT * FROM ${DataBaseConstants.PRIORITY.TABLE_NAME}", null)
             if (cursor.count > 0) {
-                cursor.moveToFirst()
                 while (cursor.moveToNext()) {
                     val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.PRIORITY.COLUMNS.ID))
                     val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.PRIORITY.COLUMNS.DESCRIPTION))
